@@ -5,6 +5,7 @@
 https://docs.retter.io/docs/cli
 ```
 
-###  1-) #### Change projectId with your projects id inside "rio.json".
-###  2-) #### Open terminal in project directory and install libraries with "npm i".
-###  3-) #### Chnage directory of terminal to classes and again install libraries.
+####  1-) Change projectId with your projects id inside "rio.json".
+####  2-) Open terminal in project directory and install libraries with "npm i".
+####  3-) Chnage directory of terminal to classes and again install libraries.
+####  4-) Now you can deploy project to rio. You can follow instructions of documentation.
