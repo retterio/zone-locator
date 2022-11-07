@@ -2,7 +2,7 @@
 
 ### Rio CLI is required to use this project. You can follow instructions of documentation.
 ```bash
-https://docs.retter.io/docs/cli
+ [Rio Documentation](https://docs.retter.io/docs/cli)
 ```
 
 ####  1-) Change projectId with your projects id inside "rio.json".
