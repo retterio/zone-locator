@@ -1,0 +1,8 @@
+{
+  "name": "simple",
+  "version": "1.0.0",
+  "dependencies": {
+    "@retter/rdk": "1.1.15",
+    "tesseract.js": "2.1.5"
+  }
+}
