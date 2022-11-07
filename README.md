@@ -15,6 +15,8 @@ https://docs.retter.io/docs/cli
 ## Deployment
 
 ```bash
+TERMINAL
+
 cd YourProjectDirectory
 
 rio deploy --project-id YOUR_PROJECT_ID --profile YOUR_PROFILE_NAME
