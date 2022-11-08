@@ -17,3 +17,6 @@ methods:
   - method: updatePolygon
     sync: true
     handler: index.updatePolygon
+  - method: isInsidePoly
+    sync: true
+    handler: index.isInsidePoly

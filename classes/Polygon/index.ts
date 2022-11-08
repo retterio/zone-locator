@@ -14,6 +14,49 @@ export async function getState(data: Data): Promise<Response> {
   return { statusCode: 200, body: data.state }
 }
 
+function inside(point, vs) {
+  // ray-casting algorithm based on
+  // https://wrf.ecse.rpi.edu/Research/Short_Notes/pnpoly.html/pnpoly.html
+  
+  var x = point[0], y = point[1];
+  
+  var inside = false;
+  for (var i = 0, j = vs.length - 1; i < vs.length; j = i++) {
+      var xi = vs[i][0], yi = vs[i][1];
+      var xj = vs[j][0], yj = vs[j][1];
+      
+      var intersect = ((yi > y) != (yj > y))
+          && (x < (xj - xi) * (y - yi) / (yj - yi) + xi);
+      if (intersect) inside = !inside;
+  }
+  
+  return inside;
+};
+
+export async function isInsidePoly(data: Data): Promise<StepResponse> {
+  try {
+    const { lat, lon } = data.request.body
+    const { coordinates } = data.state.public
+
+    console.log(lat);
+    console.log(lon);
+    console.log(coordinates);
+    
+
+    data.response = {
+      statusCode: 200,
+      body: { success: true, message: inside([lat, lon], [coordinates.lat, coordinates.lon]) },
+    }
+  } catch (e) {
+    data.response = {
+      statusCode: 406,
+      body: { succes: false, error: e.message },
+    }
+  }
+
+  return data
+}
+
 export async function createNewZone(data: Data): Promise<StepResponse> {
   try {
     const { name, id, lat, lon } = data.request.body
@@ -31,7 +74,7 @@ export async function createNewZone(data: Data): Promise<StepResponse> {
   } catch (e) {
     data.response = {
       statusCode: 406,
-      body: { succes: false, error: e },
+      body: { succes: false, error: e.message },
     }
   }
 

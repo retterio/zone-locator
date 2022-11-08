@@ -314,6 +314,23 @@ public async updatePolygon(body?: any, options?: RDKOptions): Promise<RetterResp
         body,
     })
 }
+
+/**
+ * calls isInsidePoly on Polygon
+ * @param {any} body - payload
+ * @param {RDKOptions} options - other method call parameters
+ * @returns {Promise<RetterResponse<any>>}
+ */
+public async isInsidePoly(body?: any, options?: RDKOptions): Promise<RetterResponse<any> | undefined> {
+    return await this._rdk.methodCall({
+        ...options,
+        classId: 'Polygon',
+        instanceId: this.instanceId,
+        lookupKey: this.lookupKey,
+        methodName: 'isInsidePoly',
+        body,
+    })
+}
 }
 }
 
@@ -324,5 +341,6 @@ export namespace RioAssets {
     DELETE_ZONE = 'deleteZone',
     LOCATE = 'locate',
     UPDATE_POLYGON = 'updatePolygon',
+    IS_INSIDE_POLY = 'isInsidePoly',
 }
 }
