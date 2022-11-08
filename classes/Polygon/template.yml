@@ -4,19 +4,19 @@ getState: index.getState
 methods:
   - method: createNewZone
     sync: true
-    handler: index.createNewZone
+    handler: polygon.createNewZone
   - method: getZoneInfo
     sync: true
-    handler: index.getZoneInfo
+    handler: polygon.getZoneInfo
   - method: deleteZone
     sync: true
-    handler: index.deleteZone
+    handler: polygon.deleteZone
   - method: locate
     sync: true
-    handler: index.locate
-  - method: updatePolygon
+    handler: polygon.locate
+  - method: updateZone
     sync: true
-    handler: index.updatePolygon
+    handler: polygon.updateZone
   - method: isInsidePoly
     sync: true
-    handler: index.isInsidePoly
+    handler: polygon.isInsidePoly

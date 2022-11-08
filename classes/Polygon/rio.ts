@@ -299,18 +299,18 @@ public async locate(body?: any, options?: RDKOptions): Promise<RetterResponse<an
 }
 
 /**
- * calls updatePolygon on Polygon
+ * calls updateZone on Polygon
  * @param {any} body - payload
  * @param {RDKOptions} options - other method call parameters
  * @returns {Promise<RetterResponse<any>>}
  */
-public async updatePolygon(body?: any, options?: RDKOptions): Promise<RetterResponse<any> | undefined> {
+public async updateZone(body?: any, options?: RDKOptions): Promise<RetterResponse<any> | undefined> {
     return await this._rdk.methodCall({
         ...options,
         classId: 'Polygon',
         instanceId: this.instanceId,
         lookupKey: this.lookupKey,
-        methodName: 'updatePolygon',
+        methodName: 'updateZone',
         body,
     })
 }
@@ -340,7 +340,7 @@ export namespace RioAssets {
     GET_ZONE_INFO = 'getZoneInfo',
     DELETE_ZONE = 'deleteZone',
     LOCATE = 'locate',
-    UPDATE_POLYGON = 'updatePolygon',
+    UPDATE_ZONE = 'updateZone',
     IS_INSIDE_POLY = 'isInsidePoly',
 }
 }
