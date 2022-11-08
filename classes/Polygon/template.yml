@@ -1,0 +1,19 @@
+authorizer: index.authorizer
+init: index.init
+getState: index.getState
+methods:
+  - method: createNewZone
+    sync: true
+    handler: index.createNewZone
+  - method: getZoneInfo
+    sync: true
+    handler: index.getZoneInfo
+  - method: deleteZone
+    sync: true
+    handler: index.deleteZone
+  - method: locate
+    sync: true
+    handler: index.locate
+  - method: updatePolygon
+    sync: true
+    handler: index.updatePolygon

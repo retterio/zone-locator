@@ -20,38 +20,15 @@ interface RetterResponse<T> extends CloudObjectResponse {
 // These functions will throw an error if the JSON doesn't
 // match the expected interface, even if the JSON is valid.
 
-export interface RioModelsObject {
-    removeTodoModel?: RemoveTodoModel;
-    upsertTodoModel?: UpsertTodoModel;
-}
-
-export interface RemoveTodoModel {
-    /**
-     * Todo id.
-     */
-    id: number;
-}
-
-export interface UpsertTodoModel {
-    /**
-     * Todo id.
-     */
-    id?: number;
-    /**
-     * Todo text.
-     */
-    todo: string;
-}
-
 // Converts JSON strings to/from your types
 // and asserts the results of JSON.parse at runtime
 export class Convert {
-    public static toRioModels(json: string): any[] | boolean | number | number | null | RioModelsObject | string {
-        return cast(JSON.parse(json), u(a("any"), true, 3.14, 0, null, r("RioModelsObject"), ""));
+    public static toRioModels(json: string): any[] | boolean | number | number | { [key: string]: any } | null | string {
+        return cast(JSON.parse(json), u(a("any"), true, 3.14, 0, m("any"), null, ""));
     }
 
-    public static rioModelsToJson(value: any[] | boolean | number | number | null | RioModelsObject | string): string {
-        return JSON.stringify(uncast(value, u(a("any"), true, 3.14, 0, null, r("RioModelsObject"), "")), null, 2);
+    public static rioModelsToJson(value: any[] | boolean | number | number | { [key: string]: any } | null | string): string {
+        return JSON.stringify(uncast(value, u(a("any"), true, 3.14, 0, m("any"), null, "")), null, 2);
     }
 }
 
@@ -188,17 +165,6 @@ function r(name: string) {
 }
 
 const typeMap: any = {
-    "RioModelsObject": o([
-        { json: "removeTodoModel", js: "removeTodoModel", typ: u(undefined, r("RemoveTodoModel")) },
-        { json: "upsertTodoModel", js: "upsertTodoModel", typ: u(undefined, r("UpsertTodoModel")) },
-    ], "any"),
-    "RemoveTodoModel": o([
-        { json: "id", js: "id", typ: 3.14 },
-    ], "any"),
-    "UpsertTodoModel": o([
-        { json: "id", js: "id", typ: u(undefined, 3.14) },
-        { json: "todo", js: "todo", typ: "" },
-    ], "any"),
 };
 
 
@@ -210,8 +176,8 @@ export interface RDKOptions<T = KeyValueString> {
 }
 
 export namespace Classes {
-    /** PhotoTextExtractor Class */
-export class PhotoTextExtractor {
+    /** Polygon Class */
+export class Polygon {
     private readonly _rdk: RDK
     private readonly lookupKey?: { name: string; value: string }
     public readonly instanceId?: string
@@ -221,14 +187,14 @@ export class PhotoTextExtractor {
     /**
      * use this constructor if you know the instance id.
      * @param {string} instanceId - instance id
-     * @returns {PhotoTextExtractor}
+     * @returns {Polygon}
      */
     public constructor(instanceId: string);
     /**
      * use this constructor if you know only the look up key.
      * @param {string} name - look up key name
      * @param {string} value - look up key value
-     * @returns {PhotoTextExtractor}
+     * @returns {Polygon}
      */
     public constructor(name: string, value: string);
     public constructor(...args: string[]) {
@@ -246,16 +212,16 @@ export class PhotoTextExtractor {
     /**
      * Gets a cloud object instance or creates new one
      * @param {RetterRequest<any>} options - instance options
-     * @returns {Promise<PhotoTextExtractor>}
+     * @returns {Promise<Polygon>}
      */
-    public static async getInstance(options?: RetterRequest<any>): Promise<PhotoTextExtractor> {
+    public static async getInstance(options?: RetterRequest<any>): Promise<Polygon> {
         const rdk = new RDK()
         const result = await rdk.getInstance({
             ...options,
-            classId: 'PhotoTextExtractor',
+            classId: 'Polygon',
         })
         if (result && 200 <= result.statusCode && result.statusCode < 300) {
-            const _instance = new PhotoTextExtractor(result.body.instanceId)
+            const _instance = new Polygon(result.body.instanceId)
             _instance.isNewInstance = !!result.body.newInstance
             _instance._response = result.body.response
             return _instance
@@ -265,18 +231,86 @@ export class PhotoTextExtractor {
     }
 
     /**
- * calls ExtractText on PhotoTextExtractor
+ * calls createNewZone on Polygon
  * @param {any} body - payload
  * @param {RDKOptions} options - other method call parameters
  * @returns {Promise<RetterResponse<any>>}
  */
-public async ExtractText(body?: any, options?: RDKOptions): Promise<RetterResponse<any> | undefined> {
+public async createNewZone(body?: any, options?: RDKOptions): Promise<RetterResponse<any> | undefined> {
     return await this._rdk.methodCall({
         ...options,
-        classId: 'PhotoTextExtractor',
+        classId: 'Polygon',
         instanceId: this.instanceId,
         lookupKey: this.lookupKey,
-        methodName: 'ExtractText',
+        methodName: 'createNewZone',
+        body,
+    })
+}
+
+/**
+ * calls getZoneInfo on Polygon
+ * @param {any} body - payload
+ * @param {RDKOptions} options - other method call parameters
+ * @returns {Promise<RetterResponse<any>>}
+ */
+public async getZoneInfo(body?: any, options?: RDKOptions): Promise<RetterResponse<any> | undefined> {
+    return await this._rdk.methodCall({
+        ...options,
+        classId: 'Polygon',
+        instanceId: this.instanceId,
+        lookupKey: this.lookupKey,
+        methodName: 'getZoneInfo',
+        body,
+    })
+}
+
+/**
+ * calls deleteZone on Polygon
+ * @param {any} body - payload
+ * @param {RDKOptions} options - other method call parameters
+ * @returns {Promise<RetterResponse<any>>}
+ */
+public async deleteZone(body?: any, options?: RDKOptions): Promise<RetterResponse<any> | undefined> {
+    return await this._rdk.methodCall({
+        ...options,
+        classId: 'Polygon',
+        instanceId: this.instanceId,
+        lookupKey: this.lookupKey,
+        methodName: 'deleteZone',
+        body,
+    })
+}
+
+/**
+ * calls locate on Polygon
+ * @param {any} body - payload
+ * @param {RDKOptions} options - other method call parameters
+ * @returns {Promise<RetterResponse<any>>}
+ */
+public async locate(body?: any, options?: RDKOptions): Promise<RetterResponse<any> | undefined> {
+    return await this._rdk.methodCall({
+        ...options,
+        classId: 'Polygon',
+        instanceId: this.instanceId,
+        lookupKey: this.lookupKey,
+        methodName: 'locate',
+        body,
+    })
+}
+
+/**
+ * calls updatePolygon on Polygon
+ * @param {any} body - payload
+ * @param {RDKOptions} options - other method call parameters
+ * @returns {Promise<RetterResponse<any>>}
+ */
+public async updatePolygon(body?: any, options?: RDKOptions): Promise<RetterResponse<any> | undefined> {
+    return await this._rdk.methodCall({
+        ...options,
+        classId: 'Polygon',
+        instanceId: this.instanceId,
+        lookupKey: this.lookupKey,
+        methodName: 'updatePolygon',
         body,
     })
 }
@@ -284,7 +318,11 @@ public async ExtractText(body?: any, options?: RDKOptions): Promise<RetterRespon
 }
 
 export namespace RioAssets {
-    export enum PhotoTextExtractor {
-    _EXTRACT_TEXT = 'ExtractText',
+    export enum Polygon {
+    CREATE_NEW_ZONE = 'createNewZone',
+    GET_ZONE_INFO = 'getZoneInfo',
+    DELETE_ZONE = 'deleteZone',
+    LOCATE = 'locate',
+    UPDATE_POLYGON = 'updatePolygon',
 }
 }

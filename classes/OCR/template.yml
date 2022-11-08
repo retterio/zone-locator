@@ -1,7 +1,0 @@
-authorizer: index.authorizer
-init: index.init
-getState: index.getState
-methods:
-  - method: ExtractText
-    sync: true
-    handler: index.ExtractText
