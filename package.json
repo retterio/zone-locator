@@ -1,11 +1,11 @@
 {
-  "name": "ocr-example",
+  "name": "zone-locator",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "build": "tsc -b .",
-    "deploy": "export RIO_CLI_URL=api.a101prod.retter.io && rio d --project-id 132c0ntts --profile goodman"
+    "deploy": "export RIO_CLI_URL=api.a101prod.retter.io && rio d --project-id 1c25k5o9a"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +16,7 @@
   "dependencies": {
     "@retter/rio-cli": "^1.10.0",
     "@retter/sdk": "^0.4.0",
+    "rio": "^2.4.1",
     "tesseract.js": "^2.1.5",
     "textract": "^2.5.0"
   }
