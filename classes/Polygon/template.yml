@@ -2,21 +2,18 @@ authorizer: index.authorizer
 init: index.init
 getState: index.getState
 methods:
-  - method: createNewZone
-    sync: true
-    handler: polygon.createNewZone
-  - method: getZoneInfo
-    sync: true
-    handler: polygon.getZoneInfo
-  - method: deleteZone
-    sync: true
-    handler: polygon.deleteZone
-  - method: locate
-    sync: true
-    handler: polygon.locate
+  - method: insertZone
+    type: WRITE
+    handler: polygon.insertZone
+  - method: removeZone
+    type: WRITE
+    handler: polygon.removeZone
   - method: updateZone
-    sync: true
+    type: WRITE
     handler: polygon.updateZone
-  - method: isInsidePoly
-    sync: true
-    handler: polygon.isInsidePoly
+  - method: getZones
+    type: READ
+    handler: polygon.getZones
+  - method: locateZone
+    type: READ
+    handler: polygon.locateZone
