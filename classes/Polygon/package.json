@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "dependencies": {
     "@retter/rdk": "1.1.15",
-    "zod": "^3.19.1"
+    "zod": "3.17.2"
   },
   "scripts": {
     "coverage": "nyc ava",
-    "test": "ava __tests__"
+    "test": "ava __tests__",
+    "export-models": "ts-node scripts/export-models.ts"
   }
 }

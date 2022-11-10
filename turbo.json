@@ -1,0 +1,66 @@
+{
+  "$schema": "https://turborepo.org/schema.json",
+  "pipeline": {
+    "export-models": {
+      "cache": true
+    },
+    "lint": {
+      "cache": true,
+      "outputs": []
+    },
+    "build": {
+      "dependsOn": ["export-models"],
+      "outputs": ["dist/**"]
+    },
+    "dep-build": {
+      "dependsOn": ["export-models"],
+      "outputs": ["dist/**"],
+      "cache": false
+    },
+    "utils#build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"],
+      "cache": false
+    },
+    "persona-click#build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"],
+      "cache": false
+    },
+    "cdh#build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"],
+      "cache": false
+    },
+    "sms-manager#build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"],
+      "cache": false
+    },
+    "places#build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"],
+      "cache": false
+    },
+    "places-lib#build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"],
+      "cache": false
+    },
+    "test": {
+      "dependsOn": ["^build"],
+      "outputs": [],
+      "inputs": ["classes/**/__tests__/*.ava.ts", "classes/**/tests/*.ava.ts"]
+    },
+    "ci-tests": {
+      "dependsOn": ["^build"],
+      "outputs": [],
+      "inputs": ["classes/**/__tests__/*.ava.ts", "classes/**/tests/*.ava.ts"],
+      "cache": false
+    },
+    "coverage": {
+      "dependsOn": ["^test"],
+      "outputs": ["coverage/**"]
+    }
+  }
+}

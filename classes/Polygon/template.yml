@@ -15,5 +15,6 @@ methods:
     type: READ
     handler: polygon.getZones
   - method: locateZone
+    inputModel: Coordinate
     type: READ
     handler: polygon.locateZone
