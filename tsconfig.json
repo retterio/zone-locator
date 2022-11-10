@@ -1,15 +1,25 @@
 {
     "compilerOptions": {
-        "lib": ["ES2015", "dom"],
+        "baseUrl": ".",
+        "lib": ["ES2017", "dom"],
         "module": "commonjs",
         "target": "es5",
         "sourceMap": true,
         "esModuleInterop": true,
         "moduleResolution": "node",
-        "downlevelIteration": true
+        "skipLibCheck": true,
+        "downlevelIteration": true,
+        "resolveJsonModule": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "strictNullChecks": true,
+        "paths": {},
+        "types": ["node"],
+        "outDir": "dist",
+        "typeRoots": ["node_modules/@types"]
     },
-    "exclude": [
-        "**/node_modules/**",
-        "**/dist/**"
-    ]
+    "exclude": ["**/node_modules/*", "**/dist/**", "test/*", "classes/**/node_modules/**", "classes/CDH/**", "classes/**/rio.ts"],
+    "ts-node": {
+        "require": ["tsconfig-paths/register"]
+    }
 }

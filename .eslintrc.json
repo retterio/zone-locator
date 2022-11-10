@@ -1,0 +1,76 @@
+{
+  "ignorePatterns": [
+    "classes/**/node_modules",
+    "classes/**/__tests__/*.ava.ts",
+    "classes/**/tests/*.ava.ts",
+    "**/**/rio.ts"
+  ],
+  "settings": {
+    "import/extensions": [
+      ".js",
+      ".ts"
+    ],
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true,
+        "project": "./tsconfig.json"
+      }
+    }
+  },
+  "extends": [
+    "airbnb-base",
+    "airbnb-typescript/base",
+    "plugin:import/typescript",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:unicorn/recommended"
+  ],
+  "parserOptions": {
+    "project": [
+      "./tsconfig.json"
+    ]
+  },
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint",
+    "unicorn"
+  ],
+  "rules": {
+    "no-param-reassign": "off",
+    "object-curly-newline": "off",
+    "@typescript-eslint/no-param-reassign": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/restrict-plus-operands":"off",
+    "@typescript-eslint/no-unnecessary-type-assertion":"off",
+    "@typescript-eslint/no-explicit-any": [
+      "warn",
+      {
+        "ignoreRestArgs": true
+      }
+    ],
+    "@typescript-eslint/require-await": "off",
+    "import/no-unresolved": "error",
+    "@typescript-eslint/semi": "off",
+    "@typescript-eslint/no-unnecessary-type-constraint": "off",
+    "implicit-arrow-linebreak": "off",
+    "max-len": [
+      "error",
+      200
+    ],
+    "no-continue": "off",
+    "no-console": "off",
+    "no-restricted-syntax": "off",
+    "import/no-extraneous-dependencies": "off",
+    "no-plusplus": "off",
+    "@typescript-eslint/indent": "off",
+    "@typescript-eslint/no-redeclare": "off",
+    "import/no-relative-packages": "off",
+    "import/prefer-default-export": "off",
+    "import/no-cycle": "off",
+    "@typescript-eslint/no-unsafe-call": "off", // https://github.com/typescript-eslint/typescript-eslint/issues/2109,
+    "no-unused-expressions": [
+      "error"
+    ]
+  }
+}

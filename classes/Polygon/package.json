@@ -4,5 +4,9 @@
   "dependencies": {
     "@retter/rdk": "1.1.15",
     "zod": "^3.19.1"
+  },
+  "scripts": {
+    "coverage": "nyc ava",
+    "test": "ava __tests__"
   }
 }

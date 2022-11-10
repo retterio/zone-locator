@@ -4,7 +4,7 @@ import { Zone, Coordinate } from './types'
 export async function insertZone(data: Data): Promise<StepResponse> {
     try {
         const { coordinates, id, name } = data.request.body as Zone
-        const { zones } = data.state.public
+        const { zones } = data.state.public!
 
         const index = zones.findIndex((zone: Zone) => zone.id === id)
         if (index !== -1) throw new Error(`Zone with id of ${id} already exists!`);
@@ -28,16 +28,16 @@ export async function insertZone(data: Data): Promise<StepResponse> {
 export async function removeZone(data: Data): Promise<StepResponse> {
     try {
         const { id } = data.request.body as Zone
-        const { zones } = data.state.public
+        const { zones } = data.state.public!
 
         const index = zones.findIndex((zone: Zone) => zone.id === id)
         if (index === -1) throw new Error(`Zone with id of ${id} does not exist!`);
 
-        data.state.public.zones = zones.filter((zone: Zone) => zone.id !== id)
+        data.state.public!.zones = zones.filter((zone: Zone) => zone.id !== id)
 
         data.response = {
             statusCode: 200,
-            body: { success: true, message: data.state.public.zones },
+            body: { success: true, message: data.state.public!.zones },
         }
     } catch (e) {
         data.response = {
@@ -52,7 +52,7 @@ export async function removeZone(data: Data): Promise<StepResponse> {
 export async function updateZone(data: Data): Promise<StepResponse> {
     try {
         const { coordinates, id, name } = data.request.body as Zone
-        const { zones } = data.state.public
+        const { zones } = data.state.public!
 
         const index = zones.findIndex((zone: Zone) => zone.id === id)
         if (index === -1) throw new Error(`Zone with id of ${id} does not exist!`);
@@ -75,7 +75,7 @@ export async function updateZone(data: Data): Promise<StepResponse> {
 
 export async function getZones(data: Data): Promise<StepResponse> {
     try {
-        const { zones } = data.state.public
+        const { zones } = data.state.public!
 
         data.response = {
             statusCode: 200,
@@ -113,7 +113,7 @@ const inside = (zone: Zone, coordinate: Coordinate): boolean => {
 export async function locateZone(data: Data): Promise<StepResponse> {
     try {
         const input = data.request.body as Coordinate
-        const zones = data.state.public.zones as Zone[]
+        const zones = data.state.public!.zones as Zone[]
 
         const zoneIds: string[] = []
 
